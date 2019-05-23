@@ -60,4 +60,9 @@
             $this->render();
         }
 
+        function acceso(){
+            $usuario = $_POST['usuario'];
+            $password = $_POST['password'];
+        }
+
     }
