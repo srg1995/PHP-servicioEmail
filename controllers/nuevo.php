@@ -12,9 +12,7 @@
 
         //funcion que me intenta registrar un cliente
         function registrarCliente(){
-
-            if(isset($_POST['acepto'])){
-                $mensaje = "";
+            $mensaje = "";
                 $nombre = $_POST['nombre'];
                 $telefono = $_POST['telefono'];
                 $email = $_POST['email'];
@@ -24,24 +22,27 @@
                     'nombre' => $nombre,
                     'telefono' => $telefono,
                     'email' => $email,
-                    'mensaje' => $mensaje,
-                    'acepto' => 's'];
+                    'mensaje' => $mensaje];
 
+            if(isset($_POST['acepto'])){
                 $_SESSION['datos'] = $datos;
                 try{
                     $this->model->insert($datos);
                 }catch(PDOException $e){
                     $mensaje = "ya existe este cliente";
                 }
-                $destino ='srg_ek@hotmail.com';
-                $desde = 'From:'.'srg_ek@hotmail.com';
-                $asunto = 'este es un asunto';
-                $mensaje = 'este es el mensaje';
-                mail($destino,$desde,$asunto,$mensaje);
+                $destino1 ='admin@hotmail.com';
+                $destino2 = $email;
+                $desde = 'From:'.'admin@hotmail.com';
+                $asunto = 'mensaje enciado por'.$nombre;
+                $mensaje = $mensaje;
+                mail($destino1,$desde,$asunto,$mensaje);
+                mail($destino2,$desde,$asunto,$mensaje);
                 $this->view->render('nuevo/gracias');
             }else{
                 $mensaje = "Es necesario aceptar la politica";
                 $this->view->mensaje = $mensaje;
+                $this->view->cliente = $datos;
                 $this->render();
             }
         }

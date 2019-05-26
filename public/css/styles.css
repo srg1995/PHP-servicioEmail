@@ -60,6 +60,20 @@ ul.menu li a:hover{
     margin-left: 5%;
     width: 40%;
 }
+.info{
+    color: #FFAB04;
+    border: solid 1px #FFAB04;
+    font-size: 1.3em;
+    width: 30%;
+    margin: 0 auto;
+}
+.error{
+    color: #CF3922;
+    border: solid 1px #CF3922;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+}
 .indicaciones{
     width: 70%;
     margin: 0 auto;

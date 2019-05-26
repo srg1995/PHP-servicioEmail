@@ -21,7 +21,7 @@
                 <input type="password" class="form-control" placeholder="password" name="password" required>
             </div>
 
-            <div class="center"><?php echo $this->mensaje; ?></div>
+            <?php if(!empty($this->mensaje)){ echo "<div class='center info error'>".$this->mensaje."</div>";} ?></div>
             <button type="submit" class="btn btn-outline-success">Acceder</button>
         </form>
 

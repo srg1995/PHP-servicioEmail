@@ -5,5 +5,4 @@
         public $telefono;
         public $email;
         public $mensaje;
-        public $acepto;
 }

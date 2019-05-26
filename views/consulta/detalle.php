@@ -10,39 +10,29 @@
 <body>
     <?php require 'views/header.php'?>
     <section>
-        <h1 class="center">MODIFICAR CLIENTE CON DNI <?php echo $this->cliente->dni; ?></h1>
-        <div class="center"><?php echo $this->mensaje; ?></div>
+        <h1 class="center">MODIFICAR CLIENTE CON NOMBRE <?php echo $this->cliente->nombre; ?></h1>
+        <?php if(!empty($this->mensaje)){ echo "<div class='center info'>".$this->mensaje."</div>";} ?></div>
         <form method="POST" action="<?php echo constant('URL');?>consulta/actualizarCliente">
-            <p>
-                <label for="nombre">nombre</label><br>
-                <input type="text" name="nombre" value="<?php echo $this->cliente->nombre; ?>">
-            </p>
-            <p>
-                <label for="apellidos">apellidos</label><br>
-                <input type="text" name="apellidos" value="<?php echo $this->cliente->apellidos; ?>">
-            </p>
-            <p>
-                <label for="dni">dni</label><br>
-                <input type="text" name="dni" maxlength="9" value="<?php echo $this->cliente->dni; ?>">
-            </p>
-            <p>
-                <label for="direccion">direccion</label><br>
-                <input type="text" name="direccion" value="<?php echo $this->cliente->direccion; ?>">
-            </p>
-            <p>
-                <label for="telefono">telefono</label><br>
-                <input type="text" name="telefono" maxlength="9" value="<?php echo $this->cliente->telefono; ?>">
-            <p>
-            </p>
-                <label for="email">email</label><br>
-                <input type="email" name="email" value="<?php echo $this->cliente->email; ?>">
-            </p>
-            <p>
-                <input type="submit" value="enviar">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" aria-describedby="emailHelp" name="nombre" value="<?php echo $this->cliente->nombre; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Telefono</label>
+                <input type="number" class="form-control" name="telefono" value="<?php echo $this->cliente->telefono; ?>" required>
+            </div>
 
-            </p>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" value="<?php echo $this->cliente->email; ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea class="form-control rounded-0" id="mensaje" rows="10" name="mensaje" ><?php echo $this->cliente->mensaje; ?></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-success">Actualizar datos</button>
         </form>
-
     </section>
 
     <?php require 'views/footer.php'?>

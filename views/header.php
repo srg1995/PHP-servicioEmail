@@ -12,10 +12,10 @@
 <body>
     <header>
         <ul class="menu">
-            <li><a href="<?php echo constant('URL');?>main">Inicio</a></li>
-            <li><a href="<?php echo constant('URL');?>nuevo">Formulario</a></li>
-            <li><a href="<?php echo constant('URL');?>consulta">Clientes</a></li>
-            <li><a href="<?php echo constant('URL');?>ayuda">Productos</a></li>
+            <li><a href="<?php echo constant('URL');?>main"><span class="fas fa-home"> Inicio</span></a></li>
+            <li><a href="<?php echo constant('URL');?>nuevo"><span class="fas fa-clipboard-list"> Formulario</span></a></li>
+            <li><a href="<?php echo constant('URL');?>consulta"><span class="fas fa-user"> Administrar</span></a></li>
+            <li><a href="<?php echo constant('URL');?>consulta/desconectar"><span class="fas fa-door-open"> Salir</span></a></li>
         </ul>
     </header>
 </body>

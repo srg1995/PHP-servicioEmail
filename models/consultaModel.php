@@ -15,11 +15,9 @@ include_once 'models/cliente.php';
                 while($row = $query->fetch()){
                     $item = new Cliente();
                     $item->nombre = $row['nombre'];
-                    $item->apellidos = $row['apellidos'];
-                    $item->dni = $row['dni'];
-                    $item->direccion = $row['direccion'];
                     $item->telefono = $row['telefono'];
                     $item->email = $row['email'];
+                    $item->mensaje = $row['mensaje'];
 
                     array_push($items, $item);
                 }
@@ -29,38 +27,35 @@ include_once 'models/cliente.php';
             }
         }
 
-        //funcion que me devuelve el cliente con el dni solicitado
-        public function getByDNI($dni){
+        //funcion que me devuelve el cliente con el nombre solicitado
+        public function getByNombre($nombre){
             $item =new Cliente();
-            $query = $this->database->connect()->prepare("SELECT * FROM clientes WHERE dni = :dni");
-            try{
-                $query->execute(['dni' => $dni]);
+            $query = $this->database->connect()->prepare("SELECT * FROM clientes WHERE nombre = :nombre");
+            try{    
+                $query->execute(['nombre' => $nombre]);
 
                 while($row = $query->fetch()){
                     $item->nombre = $row['nombre'];
-                    $item->apellidos = $row['apellidos'];
-                    $item->dni = $row['dni'];
-                    $item->direccion = $row['direccion'];
                     $item->telefono = $row['telefono'];
                     $item->email = $row['email'];
+                    $item->mensaje = $row['mensaje'];
                 }
+                
                 return $item;
             }catch(PDOException $e){
                 return null;
             }
         }
 
-        //funcion que me actualiza el cliente con el dni indicado
+        //funcion que me actualiza el cliente con el nombre indicado
         public function update($item){
-            $query = $this->database->connect()->prepare("UPDATE clientes SET nombre = :nombre, apellidos = :apellidos, direccion = :direccion, telefono = :telefono, email = :email WHERE dni = :dni");
+            $query = $this->database->connect()->prepare("UPDATE clientes SET telefono = :telefono, email = :email, mensaje = :mensaje WHERE nombre = :nombre");
             try{
                 $query->execute([
                     'nombre' => $item['nombre'],
-                    'apellidos' => $item['apellidos'],
-                    'dni' => $item['dni'],
-                    'direccion' => $item['direccion'],
                     'telefono' => $item['telefono'],
-                    'email' => $item['email']
+                    'email' => $item['email'],
+                    'mensaje' => $item['mensaje']
                 ]);
                 return true;
 
@@ -69,15 +64,28 @@ include_once 'models/cliente.php';
             }
         }
 
-        //funcion que me elimina el cliente con el dni indicado
-        public function delete($dni){
-            $query = $this->database->connect()->prepare("DELETE FROM clientes WHERE dni = :dni");
+        //funcion que me elimina el cliente con el nombre indicado
+        public function delete($nombre){
+            $query = $this->database->connect()->prepare("DELETE FROM clientes WHERE nombre = :nombre");
             try{
                 $query->execute([
-                    'dni' => $dni
+                    'nombre' => $nombre
                 ]);
                 return true;
 
+            }catch(PDOException $e){
+                return false;
+            }
+        }
+
+        function comprobarUsuario($datos){
+            $query = $this->database->connect()->prepare("SELECT * FROM usuarios WHERE usuario = :usuario");
+            try{
+                $query->execute([
+                    'usuario' => $datos['usuario']
+                ]);
+            
+                return $query->rowCount();
             }catch(PDOException $e){
                 return false;
             }

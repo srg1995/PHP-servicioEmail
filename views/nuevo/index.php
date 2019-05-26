@@ -11,25 +11,25 @@
     <?php require 'views/header.php'?>
     <section>
         <h1 class="center">INSERTAR NUEVO CLIENTE</h1>
-        <div class="center"><?php echo $this->mensaje; ?></div>
+        <?php if(!empty($this->mensaje)){ echo "<div class='center info'>".$this->mensaje."</div>";} ?></div>
         <form method="POST" action="<?php echo constant('URL');?>nuevo/registrarCliente">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nombre" name="nombre" required>
+                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nombre" name="nombre" value="<?php if(!empty($this->cliente)){ echo $this->cliente['nombre'];} ?>" required>
             </div>
             <div class="form-group">
                 <label for="telefono">Telefono</label>
-                <input type="number" class="form-control" placeholder="Telefono" name="telefono" required>
+                <input type="tel" class="form-control" placeholder="Telefono" name="telefono" pattern="[0-9]{9}" value="<?php if(!empty($this->cliente)){ echo $this->cliente['telefono'];} ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" placeholder="Email" name="email" required>
+                <input type="email" class="form-control" placeholder="Email" name="email" value="<?php if(!empty($this->cliente)){ echo $this->cliente['email'];} ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="mensaje">Mensaje</label>
-                <textarea class="form-control rounded-0" id="mensaje" rows="10" name="mensaje" placeholder="Escriba aqui su mensaje..."></textarea>
+                <textarea class="form-control rounded-0" id="mensaje" rows="10" name="mensaje" placeholder="Escriba aqui su mensaje..."><?php if(!empty($this->cliente)){ echo $this->cliente['mensaje'];} ?></textarea>
             </div>
 
             <div class="form-check">

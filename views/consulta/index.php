@@ -18,11 +18,9 @@
             <thead>
                 <tr>
                     <th>nombre</th>
-                    <th>apellidos</th>
-                    <th>dni</th>
-                    <th>direccion</th>
                     <th>telefono</th>
                     <th>email</th>
+                    <th>mensaje</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -36,13 +34,11 @@
                         $cliente = $row;
                 ?>
                     <td><?php echo $cliente->nombre ?></td>
-                    <td><?php echo $cliente->apellidos ?></td>
-                    <td><?php echo $cliente->dni ?></td>
-                    <td><?php echo $cliente->direccion ?></td>
                     <td><?php echo $cliente->telefono ?></td>
                     <td><?php echo $cliente->email ?></td>
-                    <td> <a class="btn btn-danger" href="<?php echo constant('URL') . 'consulta/verCliente/' . $cliente->dni ?>">Editar</a> </td>
-                    <td><a class="btn btn-warning" href="<?php echo constant('URL') . 'consulta/eliminarCliente/' . $cliente->dni ?>">eliminar</a></td>
+                    <td><?php echo $cliente->mensaje ?></td>
+                    <td> <a class="btn btn-danger" href="<?php echo constant('URL') . 'consulta/verCliente/' . $cliente->nombre ?>">Editar</a> </td>
+                    <td><a class="btn btn-warning" href="<?php echo constant('URL') . 'consulta/eliminarCliente/' . $cliente->nombre ?>">eliminar</a></td>
                 </tr>
                 <?php } ?>
             </tbody>

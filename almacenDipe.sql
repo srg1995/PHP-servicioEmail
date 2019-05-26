@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 22-05-2019 a las 20:37:56
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 26-05-2019 a las 14:33:58
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `almacen`
+-- Base de datos: `almacenDipe`
 --
 
 -- --------------------------------------------------------
@@ -30,44 +30,38 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `clientes` (
   `nombre` varchar(255) NOT NULL,
-  `apellidos` varchar(255) NOT NULL,
-  `dni` varchar(255) NOT NULL,
-  `direccion` varchar(255) NOT NULL,
   `telefono` int(9) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `mensaje` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`nombre`, `apellidos`, `dni`, `direccion`, `telefono`, `email`) VALUES
-('fdsf', 'fdsfs', 'dfsf', 'fdsfsdf', 0, 'fdsfsd@ds'),
-('sergio', 'hg ', 'hg j', 'ghj g', 0, 'hg@fds');
+INSERT INTO `clientes` (`nombre`, `telefono`, `email`, `mensaje`) VALUES
+('antonio', 686868688, 'antonio@antonio.es', 'este es un mensaje de antonio'),
+('javier', 666888999, 'javier@javier.es', 'este es un mensaje de javier'),
+('pedro', 666555444, 'pedro@pedro.es', 'este es un mensaje de pedro'),
+('pepe', 666777888, 'pepe@pepe.es', 'este es un mensaje de pepe');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productos`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `productos` (
-  `nombre` varchar(255) NOT NULL,
-  `codigo` int(3) NOT NULL,
-  `descripcion` varchar(255) NOT NULL
+CREATE TABLE `usuarios` (
+  `usuario` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `productos`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `productos` (`nombre`, `codigo`, `descripcion`) VALUES
-('armario', 2, 'armario doble'),
-('camdsaffa', 1, 'cama de 135'),
-('mesa', 4, 'mesa de salon'),
-('plato', 5, 'plato grande'),
-('silla', 3, 'silla de cocina'),
-('vaso', 6, 'vaso de cristal');
+INSERT INTO `usuarios` (`usuario`, `password`) VALUES
+('admin', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -77,13 +71,13 @@ INSERT INTO `productos` (`nombre`, `codigo`, `descripcion`) VALUES
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`dni`);
+  ADD PRIMARY KEY (`nombre`);
 
 --
--- Indices de la tabla `productos`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`nombre`,`codigo`);
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

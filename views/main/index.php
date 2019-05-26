@@ -9,7 +9,6 @@
 <body>
     <?php require 'views/header.php'?>
     <section>
-    <?php var_dump($_SESSION['datos']);?>
         <h1 class="center">Para el desarrollo de la aplicacion...</h1>
         <div class="indicaciones">
             <p>
@@ -29,7 +28,6 @@
                     <li>
                         controllers
                         <ul>
-                            <li>ayuda.php</li>
                             <li>consulta.php</li>
                             <li>errores.php</li>
                             <li>main.php</li>
@@ -47,11 +45,9 @@
                     </li>
                     <li>models
                         <ul>
-                            <li>ayudaModel.php</li>
                             <li>cliente.php</li>
                             <li>consultaModel.php</li>
                             <li>nuevoModel.php</li>
-                            <li>producto.php</li>
                         </ul>
                     </li>
                     <li>
@@ -60,10 +56,6 @@
                             <li>
                                 css
                                 <ul><li>styles.css</li></ul>
-                            </li>
-                            <li>
-                            js
-                                <ul><li>llamadaAjax.js</li></ul>
                             </li>
                         </ul>
                     </li>
@@ -79,6 +71,7 @@
                             <ul>
                                 <li>index.php </li>
                                 <li>detalle.php</li>
+                                <li>login.php</li>
                             </ul>
                             </li>
                         <li>errores
@@ -88,7 +81,10 @@
                             <ul><li>index.php</li></ul>
                         </li>
                         <li>nuevo
-                            <ul><li>index.php</li></ul>
+                            <ul>
+                                <li>index.php</li>
+                                <li>gracias.php</li>
+                            </ul>
                         </li>
                     </ul>
 
@@ -114,6 +110,9 @@
 
             <p>
                 La forma de trabajo ha sido mediante github en la que iba subiendo el desarrollo por partes, mediante la app <strong>Sourcetree.</strong>
+            </p>
+            <p>
+                ** A tener en cuenta: el archivo htaccess esta sin punto para que funcione correctamente la aplicacion en el servidor hay que ponerle el punto delante.
             </p>
         </div>
     </section>
